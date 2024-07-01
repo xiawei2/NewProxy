@@ -1,4 +1,4 @@
-package main
+package divert
 
 /*
 #cgo  CFLAGS:  -I  ./include
@@ -33,7 +33,7 @@ type tmebuf struct {
 
 var ch = make(chan tmebuf, 5000)
 
-//发送函数
+// 发送函数
 func SendTo(id C.ENDPOINT_ID, pid uint64, iptype int, ip []byte, port []byte, buf []byte, opt C.PNF_UDP_OPTIONS, l int) {
 
 	ch <- tmebuf{id: id, pid: pid, iptype: iptype, ip: ip, port: port, buf: buf, options: opt, len: l}

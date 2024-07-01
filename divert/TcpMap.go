@@ -1,4 +1,4 @@
-package main
+package divert
 
 import (
 	"sync"
@@ -32,7 +32,7 @@ func (m *TcpMap) Set(key int, pid uint64, ip []byte) {
 	m.Map[key] = TcpMapInfo{pid: pid, ip: ip}
 }
 
-//Del
+// Del
 func (m *TcpMap) Del(key int) {
 	m.lock.Lock()
 	defer m.lock.Unlock()

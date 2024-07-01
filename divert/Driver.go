@@ -1,4 +1,4 @@
-package main
+package divert
 
 /*
 #cgo  LDFLAGS: -lwsock32
@@ -23,19 +23,22 @@ import (
 
 var uMap sync.Map
 
-//void (NFAPI_CC *threadStart)();
+// void (NFAPI_CC *threadStart)();
+//
 //export go_threadStart
 func go_threadStart() {
 
 }
 
-//void (NFAPI_CC *threadEnd)();
+// void (NFAPI_CC *threadEnd)();
+//
 //export go_threadEnd
 func go_threadEnd() {
 
 }
 
-//void (NFAPI_CC *tcpConnectRequest)(ENDPOINT_ID id, PNF_TCP_CONN_INFO pConnInfo);
+// void (NFAPI_CC *tcpConnectRequest)(ENDPOINT_ID id, PNF_TCP_CONN_INFO pConnInfo);
+//
 //export go_tcpConnectRequest
 func go_tcpConnectRequest(id C.ENDPOINT_ID, pConnInfo C.PNF_TCP_CONN_INFO) {
 
@@ -96,43 +99,50 @@ func go_tcpConnectRequest(id C.ENDPOINT_ID, pConnInfo C.PNF_TCP_CONN_INFO) {
 
 }
 
-//void (NFAPI_CC *tcpConnected)(ENDPOINT_ID id, PNF_TCP_CONN_INFO pConnInfo);
+// void (NFAPI_CC *tcpConnected)(ENDPOINT_ID id, PNF_TCP_CONN_INFO pConnInfo);
+//
 //export go_tcpConnected
 func go_tcpConnected(id C.ENDPOINT_ID, pConnInfo C.PNF_TCP_CONN_INFO) {
 
 }
 
-//void (NFAPI_CC *tcpClosed)(ENDPOINT_ID id, PNF_TCP_CONN_INFO pConnInfo);
+// void (NFAPI_CC *tcpClosed)(ENDPOINT_ID id, PNF_TCP_CONN_INFO pConnInfo);
+//
 //export go_tcpClosed
 func go_tcpClosed(id C.ENDPOINT_ID, pConnInfo C.PNF_TCP_CONN_INFO) {
 
 }
 
-//void (NFAPI_CC *tcpReceive)(ENDPOINT_ID id, const char * buf, int len);
+// void (NFAPI_CC *tcpReceive)(ENDPOINT_ID id, const char * buf, int len);
+//
 //export go_tcpReceive
 func go_tcpReceive(id C.ENDPOINT_ID, buf *C.char, len C.int) {
 
 }
 
-//void (NFAPI_CC *tcpSend)(ENDPOINT_ID id, const char * buf, int len);
+// void (NFAPI_CC *tcpSend)(ENDPOINT_ID id, const char * buf, int len);
+//
 //export go_tcpSend
 func go_tcpSend(id C.ENDPOINT_ID, buf *C.char, len C.int) {
 
 }
 
-//void (NFAPI_CC *tcpCanReceive)(ENDPOINT_ID id);
+// void (NFAPI_CC *tcpCanReceive)(ENDPOINT_ID id);
+//
 //export go_tcpCanReceive
 func go_tcpCanReceive(id C.ENDPOINT_ID) {
 
 }
 
-//void (NFAPI_CC *tcpCanSend)(ENDPOINT_ID id);
+// void (NFAPI_CC *tcpCanSend)(ENDPOINT_ID id);
+//
 //export go_tcpCanSend
 func go_tcpCanSend(id C.ENDPOINT_ID) {
 
 }
 
-//void (NFAPI_CC *udpCreated)(ENDPOINT_ID id, PNF_UDP_CONN_INFO pConnInfo);
+// void (NFAPI_CC *udpCreated)(ENDPOINT_ID id, PNF_UDP_CONN_INFO pConnInfo);
+//
 //export go_udpCreated
 func go_udpCreated(id C.ENDPOINT_ID, pConnInfo C.PNF_UDP_CONN_INFO) {
 
@@ -174,13 +184,15 @@ func sockHandler(id C.ENDPOINT_ID, ip string, port int, user string, pass string
 	smap.Set(int64(id), b, a)
 }
 
-//void (NFAPI_CC *udpConnectRequest)(ENDPOINT_ID id, PNF_UDP_CONN_REQUEST pConnReq);
+// void (NFAPI_CC *udpConnectRequest)(ENDPOINT_ID id, PNF_UDP_CONN_REQUEST pConnReq);
+//
 //export go_udpConnectRequest
 func go_udpConnectRequest(id C.ENDPOINT_ID, pConnReq C.PNF_UDP_CONN_REQUEST) {
 
 }
 
-//void (NFAPI_CC *udpClosed)(ENDPOINT_ID id, PNF_UDP_CONN_INFO pConnInfo);
+// void (NFAPI_CC *udpClosed)(ENDPOINT_ID id, PNF_UDP_CONN_INFO pConnInfo);
+//
 //export go_udpClosed
 func go_udpClosed(id C.ENDPOINT_ID, pConnInfo C.PNF_UDP_CONN_INFO) {
 
@@ -202,7 +214,8 @@ func go_udpClosed(id C.ENDPOINT_ID, pConnInfo C.PNF_UDP_CONN_INFO) {
 	uMap.Delete(id)
 }
 
-//void (NFAPI_CC *udpReceive)(ENDPOINT_ID id, const unsigned char * remoteAddress, const char * buf, int len, PNF_UDP_OPTIONS options);
+// void (NFAPI_CC *udpReceive)(ENDPOINT_ID id, const unsigned char * remoteAddress, const char * buf, int len, PNF_UDP_OPTIONS options);
+//
 //export go_udpReceive
 func go_udpReceive(id C.ENDPOINT_ID, remoteAddress *C.uchar, buf *C.char, len C.int, options C.PNF_UDP_OPTIONS) {
 
@@ -210,7 +223,8 @@ func go_udpReceive(id C.ENDPOINT_ID, remoteAddress *C.uchar, buf *C.char, len C.
 
 }
 
-//void (NFAPI_CC *udpSend)(ENDPOINT_ID id, const unsigned char * remoteAddress, const char * buf, int len, PNF_UDP_OPTIONS options);
+// void (NFAPI_CC *udpSend)(ENDPOINT_ID id, const unsigned char * remoteAddress, const char * buf, int len, PNF_UDP_OPTIONS options);
+//
 //export go_udpSend
 func go_udpSend(id C.ENDPOINT_ID, remoteAddress *C.uchar, buf *C.char, len C.int, options C.PNF_UDP_OPTIONS) {
 
@@ -262,13 +276,15 @@ func go_udpSend(id C.ENDPOINT_ID, remoteAddress *C.uchar, buf *C.char, len C.int
 	C.nf_udpPostSend(id, remoteAddress, buf, len, options)
 }
 
-//void (NFAPI_CC *udpCanReceive)(ENDPOINT_ID id);
+// void (NFAPI_CC *udpCanReceive)(ENDPOINT_ID id);
+//
 //export go_udpCanReceive
 func go_udpCanReceive(id C.ENDPOINT_ID) {
 
 }
 
-//void (NFAPI_CC *udpCanSend)(ENDPOINT_ID id);
+// void (NFAPI_CC *udpCanSend)(ENDPOINT_ID id);
+//
 //export go_udpCanSend
 func go_udpCanSend(id C.ENDPOINT_ID) {
 
@@ -289,7 +305,7 @@ func DriverFree() bool {
 	return true
 }
 
-//********************************
+// ********************************
 func Htons(data uint16) (ret [2]byte) {
 	ret[0] = byte((data >> 8) & 0xff)
 	ret[1] = byte((data >> 0) & 0xff)
@@ -322,7 +338,7 @@ func Int2Byte(data int) (ret []byte) {
 	return ret
 }
 
-//构建UDP的请求包
+// 构建UDP的请求包
 func UDPByte(iptype int, ip []byte, port []byte, buf []byte, bufflen int, AType int) []byte {
 
 	if iptype == AtypIPv4 {

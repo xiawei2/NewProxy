@@ -1,4 +1,4 @@
-package main
+package divert
 
 import (
 	"context"
@@ -31,7 +31,7 @@ func tcpLocal(addr string, ctx context.Context) {
 	}
 }
 
-//tcp握手
+// tcp握手
 func tcpShakehands(c net.Conn) {
 
 	defer c.Close()

@@ -1,4 +1,4 @@
-package main
+package divert
 
 import (
 	"sync"
@@ -34,7 +34,7 @@ func (m *mMap) Add(key uint64, send int64, recv int64) {
 
 }
 
-//Del
+// Del
 func (m *mMap) Del(key uint64) {
 	m.lock.Lock()
 	defer m.lock.Unlock()

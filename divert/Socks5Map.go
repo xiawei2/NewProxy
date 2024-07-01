@@ -1,4 +1,4 @@
-package main
+package divert
 
 import (
 	"net"
@@ -8,7 +8,6 @@ import (
 /*
 此map用于保存socks5udp的我受请求和握手端口
 key 为驱动id
-
 */
 type su struct {
 	conn   net.Conn //UDP的握手请求
@@ -32,7 +31,7 @@ func (m *suMap) Set(key int64, conn net.Conn, server net.Addr) {
 	m.Map[key] = su{conn: conn, server: server}
 }
 
-//Del
+// Del
 func (m *suMap) Del(key int64) {
 	m.lock.Lock()
 	defer m.lock.Unlock()
@@ -47,7 +46,7 @@ func (m *suMap) Del(key int64) {
 	delete(m.Map, key)
 }
 
-//DelAll
+// DelAll
 func (m *suMap) DelAll() {
 	m.lock.Lock()
 	defer m.lock.Unlock()
