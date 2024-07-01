@@ -1,4 +1,4 @@
-module NewProxy
+module github.com/xiawei2/NewProxy
 
 go 1.22
 

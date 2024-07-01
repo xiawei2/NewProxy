@@ -7,8 +7,8 @@ import (
 	"sort"
 	"strings"
 
-	"NewProxy/shadowaead"
-	"NewProxy/shadowstream"
+	"github.com/xiawei2/NewProxy/shadowaead"
+	"github.com/xiawei2/NewProxy/shadowstream"
 )
 
 type Cipher interface {

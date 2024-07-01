@@ -14,8 +14,8 @@ package main
 import "C"
 
 import (
-	"NewProxy/core"
 	"context"
+	"github.com/xiawei2/NewProxy/core"
 	"net"
 	"strconv"
 	"sync"
@@ -35,10 +35,10 @@ const (
 
 var proxyMap sync.Map
 
-//流量统计map
+// 流量统计map
 var ProcessInfo = NewProcessMap()
 
-//tcp map
+// tcp map
 var tcpmap = NewTcpMap()
 
 type mccInfo struct {
@@ -59,10 +59,10 @@ type ProxyInfo struct {
 	proxymode int          //代理控制    1为代理 TCP   2为代理 UDP   3为 代理TCP+UDP
 }
 
-//流量统计
+// 流量统计
 var mcc = make(chan mccInfo, 1000)
 
-//流量统计携程
+// 流量统计携程
 func f(ctx context.Context) {
 	for {
 		select {
