@@ -275,7 +275,7 @@ func SetDnsProxy(a1 *C.char, a2 C.int, a3 *C.char, a4 *C.char) bool {
 
 }
 
-//func main() {
-// Need a main function to make CGO compile package as C shared library
+func main() {
+	// Need a main function to make CGO compile package as C shared library
 
-//}
+}
